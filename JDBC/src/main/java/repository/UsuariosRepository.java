@@ -96,21 +96,36 @@ public class UsuariosRepository {
     }
 
     public void actualizarUsuario(Usuarios usuario ) {
-        String sql = "UPDATE USUARIOS SET  NOMBRE= '?' , EDAD='?' where ID=?;";
+        String sql = "UPDATE USUARIOS SET  NOMBRE= ? , EDAD=? where ID=?";
 
         try (Connection connection = Conexion.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery(sql);
 
 
-            resultSet.setLong(usuario.getId());
-            preparedStatement.setLong(0,usuario.getId());
             preparedStatement.setString(1, usuario.getNombre());
             preparedStatement.setLong(2, usuario.getEdad());
+            preparedStatement.setLong(3,usuario.getId());
 
             preparedStatement.executeUpdate();
 
             System.out.println("Usuario editado correctamente");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void eliminarUsuario(Usuarios usuario ) {
+        String sql = "DELETE FROM USUARIOS WHERE ID=?";
+
+        try (Connection connection = Conexion.getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setLong(1,usuario.getId());
+
+            preparedStatement.executeUpdate();
+
+            System.out.println("Usuario eliminado correctamente");
 
         } catch (Exception e) {
             e.printStackTrace();

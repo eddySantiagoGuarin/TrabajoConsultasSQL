@@ -35,15 +35,16 @@ public class Main {
             System.out.println("id " + usuarios.getId() + "\n" +
                     "nombre " + usuarios.getNombre() + "\n" +
                     "edad " + usuarios.getEdad());
-        }
-
-        ***/
-
-        System.out.println("........................");
+        }*/
 
 
 
-        Usuarios us1 = usuariosRepository.buscarUsuario("alejo");
+        /*System.out.println("........................");
+
+
+        System.out.println("Ingrese el nombre del Usuario que desea buscar: ");
+        String nombreBuscado=scanner.nextLine();
+        Usuarios us1 = usuariosRepository.buscarUsuario(nombreBuscado);
         System.out.print(us1);
 
         System.out.println("........................");
@@ -58,7 +59,12 @@ public class Main {
         us1.setEdad(edadAct);
 
         usuariosRepository.actualizarUsuario(us1);
-        System.out.println(us1);
+        System.out.println(us1);*/
+
+        System.out.println("Ingrese el nombre del Usuario que desea buscar: ");
+        String nombreBuscado=scanner.nextLine();
+        Usuarios us1 = usuariosRepository.buscarUsuario(nombreBuscado);
+        usuariosRepository.eliminarUsuario(us1);
 
 
         System.out.println("........................");
